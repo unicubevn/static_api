@@ -24,7 +24,7 @@ Hypercorn~=0.16.0
 vietqr-generator>=0.0.3
 
 # Encrypt / Decrypt
-cryptography~=42.0.2
+cryptography==42.0.4
 
 #Mongo DB
 pymongo~=4.6.1

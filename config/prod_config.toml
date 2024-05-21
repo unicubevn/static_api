@@ -1,6 +1,6 @@
 # hypercorn_config.toml
 
-bind = ["0.0.0.0:8000"]  # Bind to the desired address and port
+bind = ["0.0.0.0:8080"]  # Bind to the desired address and port
 workers = 4  # Number of worker processes
 worker_class = "asyncio"  # Worker type, options: asyncio, trio, uvloop, etc.
 
