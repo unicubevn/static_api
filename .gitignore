@@ -3,7 +3,6 @@ _build/
 get*.bat
 # dotfiles
 .*
-.env
 !.gitignore
 !.github
 !.mailmap
