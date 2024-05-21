@@ -1,0 +1,35 @@
+# FastApi
+fastapi==0.109.2
+fastapi-cli == 0.0.3
+email-validator==2.1.1
+qrcode~=7.4.2
+redis==5.0.2
+a2wsgi == 1.10.0
+contextvars == 2.4
+parse-accept-language == 0.1.2
+pyjwt == 2.8.0
+python-multipart == 0.0.7
+ujson == 5.9.0
+passlib[bcrypt]
+python-jose[cryptography]==3.3.0
+pydantic==2.6.1
+jose==1.0.0
+orjson==3.9.15
+python-dotenv==1.0.1
+httpx==0.26.0
+asyncio~=3.4.3
+Hypercorn~=0.16.0
+
+#VietQR
+vietqr-generator>=0.0.3
+
+# Encrypt / Decrypt
+cryptography~=42.0.2
+
+#Mongo DB
+pymongo~=4.6.1
+motor~=3.3.2
+
+#Rabbit MQ
+pika==1.3.2
+stomp-py==8.1.2

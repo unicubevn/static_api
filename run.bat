@@ -1,0 +1,1 @@
+ hypercorn server.main:app --config .\config\dev_config.toml

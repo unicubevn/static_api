@@ -1,0 +1,30 @@
+# hypercorn_config.toml
+
+bind = ["0.0.0.0:8000"]  # Bind to the desired address and port
+workers = 4  # Number of worker processes
+worker_class = "asyncio"  # Worker type, options: asyncio, trio, uvloop, etc.
+
+# SSL settings
+ssl = false
+#certfile = "/path/to/cert.pem"
+#keyfile = "/path/to/key.pem"
+
+# Logging settings
+errorlog = "/var/log/cubeapp/error.log"  # Access log file, use '-' for stdout
+accesslog = "/var/log/cubeapp/accesss.log" # Error log file, use '-' for stderr
+loglevel = 'debug'  # Logging level, options: debug, info, warning, error, critical
+access_log_format = "[%(h)s] [%(R)s] [%(s)s] [%(st)s] [req.time:%(D)sms]"
+
+# Timeout settings
+keep_alive_timeout = 5  # Keep-alive timeout in seconds
+timeout = 30  # Request timeout in seconds
+
+# WebSocket settings
+ws_max_size = 16777216  # Maximum message size in bytes
+ws_ping_interval = 20  # Ping interval in seconds
+
+# HTTP2 settings
+http2 = true  # Enable HTTP/2
+
+# Other settings
+graceful_timeout = 15  # Graceful shutdown timeout in seconds
