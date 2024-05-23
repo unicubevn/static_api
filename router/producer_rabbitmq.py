@@ -124,9 +124,14 @@ def send_rpc_request(
 @router.post("/stomp")
 def send_rpc_request(
     topic: str,
-    message:str
+    message:str,
+    vhost:str | bool = False
 ):
-    conn = stomp.Connection(host_and_ports=[(env['RABBITMQ_HOST'],61613)],vhost="meat24h")
-    conn.connect(env["RABBITMQ_USER"], env["RABBITMQ_PASS"], wait=True)
-    conn.send(body=message, destination='/topic/test')
-    conn.disconnect()
+    if vhost:
+        print(f"{topic} - {message} - {vhost}")
+        conn = stomp.Connection(host_and_ports=[(env['RABBITMQ_HOST'],61613)],vhost=vhost)
+        conn.connect(env["RABBITMQ_USER"], env["RABBITMQ_PASS"], wait=True)
+        result = conn.send(body=message, destination=f"/{topic}")
+        conn.disconnect()
+        return {"sent": message, "result": result}
+    return {"error": "Please input the 'vhost' value in params."}

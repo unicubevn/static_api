@@ -12,6 +12,9 @@
                     <environmentState>
                       <option name="name" value="local" />
                     </environmentState>
+                    <environmentState>
+                      <option name="name" value="prod" />
+                    </environmentState>
                   </list>
                 </option>
                 <option name="name" value="Default" />
@@ -300,7 +303,7 @@
                         <list>
                           <queryParamState>
                             <option name="key" value="exchange" />
-                            <option name="value" value="topic/test" />
+                            <option name="value" value="topic/pos_00007" />
                           </queryParamState>
                           <queryParamState>
                             <option name="key" value="message" />
@@ -314,7 +317,7 @@
                         </list>
                       </option>
                       <option name="sortWeight" value="6000000" />
-                      <option name="url" value="http://localhost:8000/rabbit/v1/topic?exchange=topic/test&amp;message=abc" />
+                      <option name="url" value="{{base_url}}/rabbit/v1/topic?exchange=topic/pos_00007&amp;message=abc" />
                     </requestState>
                     <requestState>
                       <option name="id" value="27059a65-1cd2-4977-b0ec-2c604a191a12" />
@@ -324,21 +327,20 @@
                         <list>
                           <queryParamState>
                             <option name="key" value="topic" />
-                            <option name="value" value="topic/test" />
+                            <option name="value" value="topic/pos_00007" />
                           </queryParamState>
                           <queryParamState>
                             <option name="key" value="message" />
                             <option name="value" value="abc" />
                           </queryParamState>
                           <queryParamState>
-                            <option name="disabled" value="true" />
-                            <option name="key" value="routing_key" />
-                            <option name="value" value="kern.critical" />
+                            <option name="key" value="vhost" />
+                            <option name="value" value="meat24h" />
                           </queryParamState>
                         </list>
                       </option>
                       <option name="sortWeight" value="7000000" />
-                      <option name="url" value="http://localhost:8000/rabbit/v1/stomp?topic=topic/test&amp;message=abc" />
+                      <option name="url" value="{{base_url}}/rabbit/v1/stomp?topic=topic/pos_00007&amp;message=abc&amp;vhost=meat24h" />
                     </requestState>
                   </list>
                 </option>
@@ -362,7 +364,7 @@
           </option>
           <option name="variables">
             <variablesState>
-              <option name="json" value="{&#10;  &quot;local&quot;: {&#10;    'base_url': 'http://127.0.0.1:8000'&#10;  }&#10;}" />
+              <option name="json" value="{&#10;  &quot;globals&quot;: {&#10;    'base_url': 'http://127.0.0.1:8000'&#10;  },&#10;}" />
             </variablesState>
           </option>
         </folderState>
