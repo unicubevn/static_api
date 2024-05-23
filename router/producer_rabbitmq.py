@@ -1,7 +1,8 @@
 import stomp
 from dotenv import dotenv_values
-from fastapi import APIRouter
+from fastapi import APIRouter, Body
 import pika
+from pydantic import BaseModel
 
 from model.fibonanci import FibonacciRpcClient
 
@@ -121,17 +122,19 @@ def send_rpc_request(
 
     return {"sent": value, "received": response}
 
+class StompBody(BaseModel):
+    topic: str
+    message:str
+    vhost:str | bool = False
 @router.post("/stomp")
 def send_rpc_request(
-    topic: str,
-    message:str,
-    vhost:str | bool = False
+        body: StompBody
 ):
-    if vhost:
-        print(f"{topic} - {message} - {vhost}")
-        conn = stomp.Connection(host_and_ports=[(env['RABBITMQ_HOST'],61613)],vhost=vhost)
+    if body.vhost:
+        print(f"{body.topic} - {body.message} - {body.vhost}")
+        conn = stomp.Connection(host_and_ports=[(env['RABBITMQ_HOST'],61613)],vhost=body.vhost)
         conn.connect(env["RABBITMQ_USER"], env["RABBITMQ_PASS"], wait=True)
-        result = conn.send(body=message, destination=f"/{topic}")
+        result = conn.send(body=body.message, destination=f"/{body.topic}")
         conn.disconnect()
-        return {"sent": message, "result": result}
+        return {"sent": body.message, "result": result}
     return {"error": "Please input the 'vhost' value in params."}
